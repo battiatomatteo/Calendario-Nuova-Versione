@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "rootDir": "./server",
+    "outDir": "./dist/server",
+    "esModuleInterop": true,
+    "strict": true,
+    "types": ["node", "express"]
+  },
+  "include": ["server/**/*"],
+  "exclude": ["dist/server"]
+}

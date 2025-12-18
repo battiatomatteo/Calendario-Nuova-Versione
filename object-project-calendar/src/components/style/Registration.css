@@ -1,0 +1,99 @@
+/* Contenitore principale */
+.conteiner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8, #d9e4ec);
+  font-family: Arial, sans-serif;
+  padding: 40px;
+}
+
+/* Box interno */
+.conteiner3 {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Titolo */
+.conteiner3 h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Form con due colonne */
+form .box {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* due colonne */
+  gap: 20px 30px; /* spazio tra righe e colonne */
+}
+
+/* Label e input */
+.LogInLabel {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #444;
+  display: block;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="number"],
+form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Radio buttons (tipo utente) occupano tutta la riga */
+form .box > div {
+  grid-column: span 2;
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+/* Messaggi di errore */
+.error-message {
+  grid-column: span 2;
+  color: #d9534f;
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Bottone submit */
+form input[type="submit"] {
+  grid-column: span 2;
+  background: #007bff;
+  color: #020202;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background: #0056b3;
+}
+
+span{
+  color: #444;
+}

@@ -1,0 +1,88 @@
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.scroll-pane {
+  max-height: 600px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3a3a6a #ccc;
+}
+
+/* Per browser WebKit */
+.scroll-pane::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-pane::-webkit-scrollbar-track {
+  background: #ccc;
+  border-radius: 6px;
+}
+
+.scroll-pane::-webkit-scrollbar-thumb {
+  background-color: #3a3a6a;
+  border-radius: 6px;
+}
+
+
+.input-paziente{
+  max-width: 150px !important;
+  max-height: 10px !important;
+}
+
+.table-wrapper {
+  max-height: 200px;         /* mostra solo 3 righe */
+  overflow-y: auto;        /* abilita scroll verticale */
+  overflow-x: visible;          /* mantiene scroll orizzontale */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 0;                  /* Chrome/Safari: nasconde verticale */
+  height: 8px;               /* 👈 mantiene quella orizzontale */
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background-color: #5a5fb8 !important;
+  border-radius: 4px;
+}
+
+/* Tabella coerente con AdminPage */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: center;
+  color: #000;
+}
+
+.table th {
+  background-color: #5a5fb8 !important;
+  color: #fff;
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #e9f5ff;
+}

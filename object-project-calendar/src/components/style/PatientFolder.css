@@ -1,0 +1,84 @@
+.patient-folder {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.patient-folder ul {
+  list-style: none;
+  padding: 0;
+}
+
+.patient-folder li {
+  margin-bottom: 6px;
+}
+
+.somministrazioni-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.somministrazioni-table th,
+.somministrazioni-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.somministrazioni-table th {
+  background-color: #f0f0f0;
+}
+
+.medicine-table,
+.somministrazioni-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.medicine-table th,
+.medicine-table td,
+.somministrazioni-table th,
+.somministrazioni-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.medicine-table th,
+.somministrazioni-table th {
+  background-color: #f0f0f0;
+}
+
+/* stile base tabella */
+.medicine-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.medicine-table th,
+.medicine-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+/* stile per gli input dentro la tabella */
+.medicine-table td input {
+  width: 95%;              /* occupa quasi tutta la cella */
+  padding: 6px;            /* spazio interno */
+  border: 1px solid #aaa;  /* bordo sottile */
+  border-radius: 4px;      /* angoli arrotondati */
+  font-size: 14px;         /* testo leggibile */
+  box-sizing: border-box;  /* include padding nel calcolo */
+}
+
+/* quando l'input è attivo */
+.medicine-table td input:focus {
+  outline: none;
+  border-color: #007bff;   /* blu evidenziato */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+

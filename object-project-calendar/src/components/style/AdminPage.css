@@ -1,0 +1,198 @@
+/* Contenitore principale */
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Pulsante Logout */
+.LogOutButton {
+  background-color: #4f57a5;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.LogOutButton:hover {
+  background-color: #4f57a5;
+}
+
+/* Sezioni (accordion) */
+.section {
+  margin-bottom: 25px;
+}
+
+.section-title {
+  width: 100%;
+  text-align: left;
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.section-title:hover {
+  background-color: #0056b3;
+}
+
+.section-content {
+  margin-top: 12px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* Tabelle */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  color: #000;
+}
+
+.table th {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #e9f5ff;
+}
+
+/* Input */
+.inputTableMedicine,
+.inputApp {
+  padding: 8px 10px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 250px;
+  font-size: 14px;
+}
+
+.inputTableMedicine:focus,
+.inputApp:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0,123,255,0.4);
+}
+
+/* Pulsanti generici */
+.buttonApp {
+  background-color: #4f57a5;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.buttonApp:hover {
+  background-color: #4f57a5;
+}
+
+/* Select */
+select.inputApp {
+  background: #fff;
+  cursor: pointer;
+}
+
+label,
+p,
+h2,
+h3,
+h4,
+span {
+  color: #000; /* 👈 forza il testo nero */
+}
+
+/* Wrapper scrollabile per tabelle con molte colonne */
+.table-wrapper {
+  overflow-x: auto;   /* 👈 abilita lo scroll orizzontale */
+  -webkit-overflow-scrolling: touch; /* scroll fluido su mobile */
+  margin-top: 15px;
+}
+
+/* Mantieni la tabella dentro il wrapper */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; /* 👈 imposta una larghezza minima */
+}
+
+/* Header con benvenuto + logout */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Testo benvenuto */
+.admin-welcome {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.inputTableMedicine{
+  max-width: 200px !important;
+}
+
+/* Gli input dentro la tabella devono adattarsi alla cella */
+.table td input,
+.table td select,
+.table td textarea {
+  width: 100%;        /* 👈 occupa tutta la cella */
+  box-sizing: border-box; /* 👈 include padding/border nel calcolo */
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+
+.password-row {
+  margin-top: 10px;
+}
+
+.password-row label {
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 8px;
+}
+

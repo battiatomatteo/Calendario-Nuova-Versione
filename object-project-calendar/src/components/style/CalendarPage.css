@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #1e1e3f, #2e2e5f) no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+/* Contenitore principale */
+.calendar-container {
+  padding: 20px;
+  padding-right: 30px; /* 👉 spazio extra a destra */
+}
+
+/* Header */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* permette di andare a capo su schermi piccoli */
+  gap: 10px;
+}
+
+.logout-button {
+  background-color: #4f57a5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Layout contenuto */
+.calendar-content {
+  display: flex;
+  align-items: flex-start; 
+  gap: 40px;
+  margin-top: 30px;
+}
+
+
+/* Card calendario */
+.calendar-card {
+  background-color: #2a2a4f;
+  padding: 20px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Titolo mese */
+.calendar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* Pulsanti navigazione mese */
+.nav-arrow {
+  background-color: #3a3a6a;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.nav-arrow:hover {
+  background-color: #5a5fb8;
+  transform: scale(1.05);
+}
+
+.nav-arrow:active {
+  background-color: #4f57a5;
+  transform: scale(0.95);
+}
+
+/* Griglia calendario */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Celle giorno */
+.date-cell {
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #3a3a6a;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.date-cell:hover {
+  background-color: #5a5fb8;
+}
+
+.weekend {
+  color: #ff4d4d; /* sabato e domenica in rosso */
+}
+
+.selected {
+  background-color: #ffcc00;
+  color: black;
+  font-weight: bold;
+}
+
+/* Programma giornaliero */
+.daily-program {
+  background-color: #ffffff;
+  color: #333;
+  padding: 20px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.daily-program h3 {
+  margin-top: 0;
+  color: #2a2a4f;
+}
+
+.reminder {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.close-button {
+  background-color: #3a3a6a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* 📱 Responsività */
+@media (max-width: 768px) {
+  .calendar-container {
+    padding-right: 20px; /* margine extra a destra su tablet */
+  }
+
+  .calendar-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .calendar-card,
+  .daily-program {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-container {
+    padding-right: 15px; /* margine più piccolo su mobile */
+  }
+
+  .calendar-grid {
+    gap: 6px;
+  }
+
+  .date-cell {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .nav-arrow {
+    padding: 4px 8px;
+    font-size: 1rem;
+  }
+}
+
+.search-input{
+  max-width: 150px !important;
+}
+
+.monthLabel{
+  color: #ffffff;
+}
