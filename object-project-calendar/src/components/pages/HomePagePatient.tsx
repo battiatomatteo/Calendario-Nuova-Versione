@@ -49,7 +49,7 @@ const HomePagePatient: React.FC = () => {
       </header>
 
       <div className="calendar-content">
-        <CalendarPage onDateSelect={setSelectedDate} username={username} tipoUtente={'medico'} />
+        <CalendarPage onDateSelect={setSelectedDate} username={username} tipoUtente={'paziente'} />
 
         <div className="daily-program">
           <h3>Programma Giornaliero</h3>

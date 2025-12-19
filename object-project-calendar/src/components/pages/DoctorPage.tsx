@@ -35,7 +35,7 @@ const DoctorPage: React.FC = () => {
       </header>
 
       <div className="calendar-content">
-        <CalendarPage onDateSelect={setSelectedDate}/>
+        <CalendarPage onDateSelect={setSelectedDate} username={''} tipoUtente={'medico'}/>
         <DoctorPanel selectedDate={selectedDate} />
       </div>
       <div>

@@ -1,4 +1,4 @@
-import { useLocation, useSearchParams, Navigate } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 export const useSecureRoute = () => {
   const location = useLocation();

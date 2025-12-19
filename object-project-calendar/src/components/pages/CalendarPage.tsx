@@ -61,7 +61,7 @@ const CalendarPage: React.FC<CalendarPageProps> = ({ onDateSelect, username, tip
 
   const handleSelect = (date: Date) => {
     setSelectedDate(date);
-    onDateSelect(date); // ✅ passa la data selezionata
+    onDateSelect(date); // passa la data selezionata
   };
 
   const monthLabel = currentMonth.toLocaleDateString('it-IT', {

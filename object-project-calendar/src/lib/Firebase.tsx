@@ -1,52 +1,6 @@
-// Import the functions you need from the SDKs you need
-/*
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { FirebaseOptions } from "firebase/app"; // Importa FirebaseOptions
-import { getFirestore } from "firebase/firestore"; // Importa getFirestore
-import { getMessaging } from 'firebase/messaging'; // per importare il servizio di messaggistica : notifiche push
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig: FirebaseOptions = { // Aggiungi la tipizzazione FirebaseOptions
-  apiKey: "AIzaSyBe2Nty6ZGqutOKD4ZNYYhhLKkNSRSgUZ0",
-  authDomain: "calendariomedico-2dbf7.firebaseapp.com",
-  projectId: "calendariomedico-2dbf7",
-  storageBucket: "calendariomedico-2dbf7.firebasestorage.app",
-  messagingSenderId: "50814490333",
-  appId: "1:50814490333:web:6b12483dc2b22037066d34",
-  measurementId: "G-PJGSLPP00J"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app); // Inizializza Firestore
-const messaging = getMessaging(app); // Inizializza il servizio di messaggistica
-
-export { db, messaging };
-
-*/
-// Utente_Prova_1     Baz 123       Utente_Prova_2
-// Prova1!!           Baz123!!      Prova2!!
-
-// Utente_medico_1    Medico2       Utente_medico_3
-// Medico1!!          Medico2!!     Medico3!!
-
-// Admin
-// Admin123!
-
-// Import the functions you need from the SDKs you need
-// import { FirebaseOptions } from "firebase/app"; // Importa FirebaseOptions
 import { getFirestore } from "firebase/firestore"; // Importa getFirestore
 import { getMessaging , getToken, onMessage } from 'firebase/messaging'; // per importare il servizio di messaggistica : notifiche push
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -62,7 +16,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 const db = getFirestore(app); // Inizializza Firestore
 const messaging = getMessaging(app); // Inizializza il servizio di messaggistica
 
