@@ -52,6 +52,12 @@ src/
 └── main.tsx  
 ```
 
+### Gestione salvataggio dati
+
+Per la gestione del salvataggio dei dati si è deciso di utilizzare Firebase , una piattaforma di sviluppo di Google .
+
+---
+
 ## 📁 Struttura e funzionamento della cartella `server/`
 
 La cartella `server/` contiene il backend dell’applicazione, sviluppato in **Node.js + Express** con **TypeScript**.  
