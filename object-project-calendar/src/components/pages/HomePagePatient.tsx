@@ -18,6 +18,12 @@ const HomePagePatient: React.FC = () => {
     (async () => {
       await NotificationService.sendWelcomeNotificationToPatient(username);
     })();
+
+    if (!username) return;
+    (async () => {
+      await NotificationService.scheduleMedicineReminders(username);
+    })();
+    
   }, [username]);
 
   if (!username) {

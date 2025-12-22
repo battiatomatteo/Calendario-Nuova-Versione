@@ -90,6 +90,8 @@ export class NotificationService {
       const medicines = patientData.medicine || []; // Lista delle medicine del paziente
       let scheduledCount = 0; // Contatore dei promemoria programmati
 
+      console.log(`Programmazione promemoria per ${username} per il giorno ${today}`);
+
       medicines.forEach((medicine: any) => { // Itera su ogni medicina
         if (medicine.somministrazioni) { // Controlla se ci sono somministrazioni definite
           medicine.somministrazioni.forEach((somm: any) => { // Itera su ogni somministrazione

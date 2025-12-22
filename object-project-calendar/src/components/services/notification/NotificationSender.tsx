@@ -55,6 +55,8 @@ export class NotificationSender {
       const [hours, minutes] = time.split(':').map(Number); // Estrae ore e minuti dal formato "HH:MM"
       if (isNaN(hours) || isNaN(minutes)) return; // Controlla la validità dell'orario
 
+      console.log(`Pianificazione notifica per ${medicineName} alle ${time} per l'utente ${username}`);
+
       const now = new Date(); // Data e ora attuali
       const notificationTime = new Date(); // Data e ora della notifica
       notificationTime.setHours(hours, minutes, 0, 0); // Imposta l'orario della notifica
