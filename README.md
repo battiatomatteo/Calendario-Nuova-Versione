@@ -1,5 +1,33 @@
 # Calendario React
 
+Web app sviluppata in React, con l’obiettivo di offrire un calendario medico intelligente con funzionalità personalizzate a seconda del tipo di utente: **Paziente, Medico e Admin** .
+
+Viengono utilizzati onesignal, come sistema di notifiche push per tenere informati i pazienti sugli orari dei farmaci e Firebase , per la gestione del salvataggio dei dati
+
+---
+
+##  Tipologie di utenza
+
+- Paziente :
+    - Calendario interattivo → cliccando su un giorno: riquadro con medicine da assumere e orari
+    - Notifiche push all’ora programmata
+    - Messaggio di benvenuto con nome
+    - Logout in alto a destra
+
+- Medico :
+    - Tabella appuntamenti giornalieri
+    - Creazione nuovi appuntamenti
+    - Ricerca paziente , per la visione della sua cartella
+    - Messaggio di benvenuto e logout
+
+- Admin , L’Admin ha accesso a una dashboard di controllo composta da 3 tabelle a scomparsa, con le seguenti funzionalità :
+    - Tabella 1 – Elenco pazienti . Una riga per paziente, con tutti i dati anagrafici, con la possibilità di creare un nuovo medico/admin
+    - Tabella 2 – Dettagli medicine per paziente
+    - Tabella 3 – Catalogo medicine
+
+
+---
+
 ## 📁 Struttura e funzionamento della cartella `src/`
 
 La cartella `src/` contiene il frontend dell'applicazione , sviluppata in **TypeScript** .
@@ -51,10 +79,6 @@ src/
 │ 
 └── main.tsx  
 ```
-
-### Gestione salvataggio dati
-
-Per la gestione del salvataggio dei dati si è deciso di utilizzare Firebase , una piattaforma di sviluppo di Google .
 
 ---
 
