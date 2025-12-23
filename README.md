@@ -136,7 +136,7 @@ npm run server  # comando per il server
 
 ```
 
-Sul proprio terminale una volta che il server è stato avviato si potranno visionare le notifiche che vengono inviate da **oneSignal** , eccone un esempio :
+Sul proprio terminale una volta che il server è stato avviato si potranno visionare le notifiche che vengono inviate da **oneSignal** , eccone un esempio di notifica di accesso di un dottore , con un piccolo riassunto della giornata :
 
 ```
 
