@@ -113,3 +113,27 @@ server/
 4. Il **servizio OneSignal** (`OneSignalService.ts`) effettua la chiamata HTTP all’API OneSignal, costruisce il payload e restituisce la risposta.
 
 Questa struttura segue un pattern chiaro (Router → Controller → Service) che permette di mantenere il backend pulito, scalabile e facilmente testabile.
+
+---
+
+## Utilizzo 
+
+Eseguire i sucessivi comandi per l'avvio : 
+
+*Comando per entrare nella cartella del progetto :*
+```
+
+cd ./object-project-calendar/
+
+```
+
+*Comando per avviare il progetto :*
+```
+
+npm run dev  # comando per l'app
+
+npm run server  # comando per il server 
+
+```
+
+All'interno del file **.env** sono state inserite le varibili di ambiente , come ad esempio le key di **oneSignal** .
