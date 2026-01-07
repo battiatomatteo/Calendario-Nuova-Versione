@@ -50,37 +50,52 @@ export class NotificationSender {
     }
   }
 
-  static async scheduleNotificationAt(username: string, medicineName: string, time: string): Promise<void> { // Pianifica una notifica per un orario specifico
+  static async scheduleNotificationAt(username: string, medicineName: string, time: string): Promise<void> {
     try {
-      const [hours, minutes] = time.split(':').map(Number); // Estrae ore e minuti dal formato "HH:MM"
-      if (isNaN(hours) || isNaN(minutes)) return; // Controlla la validità dell'orario
+      const [hours, minutes] = time.split(':').map(Number);
+      if (isNaN(hours) || isNaN(minutes)) return;
 
-      console.log(`Pianificazione notifica per ${medicineName} alle ${time} per l'utente ${username}`);
+      const now = new Date();
+      const scheduled = new Date();
+      scheduled.setHours(hours, minutes, 0, 0);
 
-      const now = new Date(); // Data e ora attuali
-      const notificationTime = new Date(); // Data e ora della notifica
-      notificationTime.setHours(hours, minutes, 0, 0); // Imposta l'orario della notifica
-      
-      // Se l'orario è già passato oggi, programma per domani
-      if (notificationTime <= now) {
-        notificationTime.setDate(notificationTime.getDate() + 1);
+      // 🔥 Caso 1: l’orario è già passato → invia SUBITO
+      if (scheduled <= now) {
+        console.log(`Orario ${time} già passato. Invio immediato per ${medicineName}`);
+
+        const userData = await NotificationHelpers.getUserData(username);
+        if (userData?.oneSignalId) {
+          await this.sendNotification({
+            oneSignalId: userData.oneSignalId,
+            subscriptionId: userData.onesignalIdSubscription,
+            title: 'Promemoria medicina',
+            message: `Devi prendere ${medicineName} delle ${time}`,
+            data: { type: 'medicine_reminder', medicineName, time }
+          });
+        }
+
+        return;
       }
 
-      const delay = notificationTime.getTime() - now.getTime(); // Calcola il ritardo in millisecondi
+      // 🔥 Caso 2: orario futuro → programma SOLO per oggi
+      const delay = scheduled.getTime() - now.getTime();
+      console.log(`Programmo notifica per ${medicineName} alle ${time} (tra ${delay} ms)`);
 
-      setTimeout(async () => { // Pianifica l'invio della notifica
-        const userData = await NotificationHelpers.getUserData(username); // Recupera i dati dell'utente
-        if (userData?.oneSignalId) { // Controlla se l'utente ha un OneSignal ID
-          await this.sendNotification({ // Invia la notifica
+      setTimeout(async () => {
+        const userData = await NotificationHelpers.getUserData(username);
+        if (userData?.oneSignalId) {
+          await this.sendNotification({
             oneSignalId: userData.oneSignalId,
             subscriptionId: userData.onesignalIdSubscription,
             title: 'È ora di prendere la medicina!',
             message: `È ora di prendere ${medicineName} alle ${time}`,
             data: { type: 'medicine_reminder', medicineName, time }
           });
+
           Logger.info(`Promemoria inviato per ${medicineName} alle ${time}`, null, 'NotificationSender');
         }
-      }, delay); // Ritardo prima dell'invio
+      }, delay);
+
     } catch (error) {
       Logger.error('Errore programmazione notifica', error, 'NotificationSender');
     }

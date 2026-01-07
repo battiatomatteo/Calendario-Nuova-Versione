@@ -42,6 +42,16 @@ type listaSomministrazioniGiornaliere = {
   medicinaId: string;
 };
 
+// Funzione per normalizzare la data in formato GG-MM-AAAA
+const normalizeDate = (dateStr: string) => {
+  if (!dateStr) return dateStr;
+  const [g, m, a] = dateStr.split("-");
+  const gg = g.padStart(2, "0");
+  const mm = m.padStart(2, "0");
+  return `${gg}-${mm}-${a}`;
+};
+
+
 const PatientMessageWindow: React.FC<Props> = ({ giorno, patientName }) => {
   const [searchParams] = useSearchParams();
   const usernamePatient = patientName ?? searchParams.get('username'); // Recupera da props o URL params 
@@ -142,7 +152,7 @@ const PatientMessageWindow: React.FC<Props> = ({ giorno, patientName }) => {
             })) as ListaSomministrazioniPaziente[];
 
           somministrazioniListForMedicina.forEach(somministrazione => { // Itera su ogni somministrazione
-            if (somministrazione.data_somministrazione === giorno) { // Controlla se la data corrisponde al giorno selezionato
+            if (normalizeDate(somministrazione.data_somministrazione) === normalizeDate(giorno)) { // Controlla se la data corrisponde al giorno selezionato
               const oreconv = somministrazione.ore === '24' ? '0' : somministrazione.ore;
               dailySomministrazioni.push({
                 id: `${medicina.id}-${somministrazione.id}`,

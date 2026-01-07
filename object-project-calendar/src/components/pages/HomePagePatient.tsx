@@ -42,7 +42,7 @@ const HomePagePatient: React.FC = () => {
   const { isValid } = useSecureRoute();
 
   if (!isValid) {
-    return <Navigate to="/" replace />; // 👈 rimanda al login
+    return <Navigate to="/" replace />; // rimanda al login
   }
 
   return (
@@ -59,7 +59,6 @@ const HomePagePatient: React.FC = () => {
 
         <div className="daily-program">
           <h3>Programma Giornaliero</h3>
-          <p><strong>{selectedDate.toLocaleDateString('it-IT')}</strong></p>
 
             <PatientMessageWindow  giorno={formatDate(selectedDate)}  />
             
