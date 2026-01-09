@@ -7,6 +7,7 @@ import { formatDate } from '../utils/utils';
 import { Navigate, useSearchParams } from 'react-router-dom';
 import { useSecureRoute } from "../hooks/useSecureRoute";
 import NotificationService from '../services/notification/NotificationService';
+import { NotificationHelpers } from '../services/notification/NotificationHelpers';
 
 const HomePagePatient: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -23,7 +24,9 @@ const HomePagePatient: React.FC = () => {
     (async () => {
       await NotificationService.scheduleMedicineReminders(username);
     })();
-    
+
+    NotificationHelpers.startSomministrazionePollingTimer(username);
+
   }, [username]);
 
   if (!username) {

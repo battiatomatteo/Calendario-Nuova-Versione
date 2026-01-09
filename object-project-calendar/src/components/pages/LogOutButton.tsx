@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { NotificationHelpers } from '../services/notification/NotificationHelpers';
 
 const LogoutButton: React.FC = () => {
   const navigate = useNavigate();
@@ -12,6 +13,9 @@ const LogoutButton: React.FC = () => {
 
     // Reindirizza alla pagina di login e sostituisci la history
     navigate("/", { replace: true });
+
+    NotificationHelpers.stopSomministrazionePollingTimer();
+
   };
 
   return (

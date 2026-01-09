@@ -1,5 +1,8 @@
 import { db } from '../../../lib/Firebase';
 import { doc, getDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import { NotificationService } from './NotificationService';
+import { NotificationSender } from './NotificationSender';
+
 
 // Classe helper per le notifiche
 // Contiene metodi statici per recuperare dati e contare appuntamenti e medicine
@@ -49,13 +52,13 @@ export class NotificationHelpers {
         somministrazioniSnap.forEach((sommDoc) => {
           const sommData = sommDoc.data();
 
-          // 1️⃣ Deve essere prevista per oggi
+          // Deve essere prevista per oggi
           if (sommData.data_somministrazione !== today) return;
 
-          // 2️⃣ Stato deve essere false
+          // Stato deve essere false
           if (sommData.stato !== false) return;
 
-          // 3️⃣ L'ora non deve superare quella attuale
+          // L'ora non deve superare quella attuale
           const [h, m] = sommData.ore.split(":").map(Number);
           const sommMinutes = h * 60 + m;
 
@@ -76,7 +79,6 @@ export class NotificationHelpers {
       return [];
     }
   }
-
 
 
   static getTodayString(): string {
@@ -165,4 +167,86 @@ export class NotificationHelpers {
       return 0;
     }
   }
+
+  // ===============================
+  // 🔥 TIMER PER SOMMINISTRAZIONI FUTURE
+  // ===============================
+
+  // 👇 Questa DEVE essere una proprietà statica della classe
+  static pollingTimeout: NodeJS.Timeout | null = null;
+
+  static async startSomministrazionePollingTimer(username: string) {
+    if (this.pollingTimeout) return; // Timer già attivo
+
+    console.log(`⏱️ Avvio timer somministrazioni per ${username}`);
+
+    const today = this.getTodayString();
+    const now = new Date();
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+    const medicineRef = collection(db, 'Pazienti', username, 'Medicine_paziente');
+    const medicineSnap = await getDocs(medicineRef);
+
+    let nextMinutes: number | null = null;
+
+    for (const medicineDoc of medicineSnap.docs) {
+      const medicineName = medicineDoc.id;
+
+      const somministrazioniRef = collection(
+        db,
+        'Pazienti',
+        username,
+        'Medicine_paziente',
+        medicineName,
+        'somministrazioni'
+      );
+
+      const somministrazioniSnap = await getDocs(somministrazioniRef);
+
+      somministrazioniSnap.forEach((sommDoc) => {
+        const sommData = sommDoc.data();
+
+        if (sommData.data_somministrazione !== today) return;
+        if (sommData.stato !== false) return;
+
+        const [h, m] = sommData.ore.split(":").map(Number);
+        const sommMinutes = h * 60 + m;
+
+        if (sommMinutes > currentMinutes) {
+          if (nextMinutes === null || sommMinutes < nextMinutes) {
+            nextMinutes = sommMinutes;
+          }
+        }
+      });
+    }
+
+    if (nextMinutes === null) {
+      console.log("⏱️ Nessuna somministrazione futura da programmare.");
+      return;
+    }
+
+    const delayMs = (nextMinutes - currentMinutes) * 60_000;
+
+    console.log(`⏱️ Timer impostato per ${delayMs / 60000} minuti`);
+
+    this.pollingTimeout = setTimeout(async () => {
+      console.log("🔔 Timer scattato: controllo nuove somministrazioni...");
+
+      await NotificationService.scheduleMedicineReminders(username);
+
+      this.pollingTimeout = null;
+      this.startSomministrazionePollingTimer(username);
+
+    }, delayMs);
+  }
+
+  static stopSomministrazionePollingTimer() {
+    if (this.pollingTimeout) {
+      clearTimeout(this.pollingTimeout);
+      this.pollingTimeout = null;
+      console.log("⏹️ Timer somministrazioni fermato");
+    }
+  }
+
+
 }
