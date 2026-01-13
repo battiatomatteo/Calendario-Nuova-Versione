@@ -16,10 +16,9 @@ export class NotificationHelpers {
   }
 
   static async getPatientData(username: string) { // Recupera i dati di un paziente dal Firestore
-    const patientRef = doc(db, 'Pazienti', username, 'Medicine_paziente'); // Riferimento al documento del paziente
-    console.log(`Recupero dati paziente per ${username}, riferimento:`, patientRef);
-    const patientSnap = await getDoc(patientRef); // Recupera il documento
-    return patientSnap.exists() ? patientSnap.data() : null; // Restituisce i dati se esistono, altrimenti null
+    const patientRef = collection(db, 'Pazienti', username, 'Medicine_paziente'); // Riferimento al documento del paziente
+    const patientSnap = await getDocs(patientRef); // Recupera il documento
+    return patientSnap.empty ? null : patientSnap.docs[0].data(); // Restituisce i dati se esistono, altrimenti null
   }
 
   static async getTodayPendingSomministrazioni(
