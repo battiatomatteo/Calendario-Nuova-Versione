@@ -1,7 +1,6 @@
 import { db } from '../../../lib/Firebase';
 import { doc, getDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import { NotificationService } from './NotificationService';
-import { logNextNotification } from '../../../../server/services/TimerLogger';
 
 
 // Classe helper per le notifiche
@@ -229,10 +228,6 @@ export class NotificationHelpers {
     const hours = Math.floor(nextMinutes / 60);
     const minutes = nextMinutes % 60;
     const time = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
-
-    // Nome medicina non disponibile → metti un placeholder
-    logNextNotification(delayMs, "Medicina", time);
-
 
 
     this.pollingTimeout = setTimeout(async () => {
