@@ -33,7 +33,6 @@ const AdminPage: React.FC = () => {
     tempo_ongi_dosaggio,
     handleTempoDosChange,
     salva,
-
     // per gestione utenti
     isVisibleUser,
     setIsVisibleUser,
