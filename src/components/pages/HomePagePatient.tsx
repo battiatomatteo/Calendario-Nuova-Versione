@@ -47,7 +47,7 @@ const HomePagePatient: React.FC = () => {
   if (!isValid) {
     return <Navigate to="/" replace />; // rimanda al login
   }
-  
+
   return (
     <div className="calendar-container">
       <header className="calendar-header">
@@ -72,7 +72,6 @@ const HomePagePatient: React.FC = () => {
     </div>
   );
 
-  
 };
 
 
